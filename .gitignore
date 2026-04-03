@@ -1,6 +1,9 @@
 # OSX
 #
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
 
 # Xcode
 #
@@ -21,6 +24,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 **/.xcode.env.local
+# Xcode 16+ specific
+*.xctestplan
 
 # Android/IntelliJ
 #
@@ -33,20 +38,27 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+# Android specific builds
+*.apk
+*.aab
+*.dex
 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+.pnpm-debug.log*
+
+# Environment Variables (IMPORTANT: Never leak your keys)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
 # fastlane
 #
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/
-
 **/fastlane/report.xml
 **/fastlane/Preview.html
 **/fastlane/screenshots
@@ -58,6 +70,8 @@ yarn-error.log
 # Ruby / CocoaPods
 **/Pods/
 /vendor/bundle/
+.bundle/
+Gemfile.lock
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
@@ -72,3 +86,11 @@ yarn-error.log
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
