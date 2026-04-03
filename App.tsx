@@ -1,65 +1,36 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
+ * Alkhidmat Foundation Web View App
+ * Updated and Fixed
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
   View,
+  ActivityIndicator,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { WebView } from 'react-native-webview';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1, // Puri screen cover karne ke liye zaroori hai
+  };
+
+  // Loading indicator dikhane ke liye function
+  const LoadingIndicatorView = () => {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator color="#00833e" size="large" />
+      </View>
+    );
   };
 
   return (
@@ -68,50 +39,38 @@ function App(): React.JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      
+      <View style={styles.container}>
+        <WebView 
+          source={{ uri: 'https://alkhidmat.org/' }} 
+          style={styles.webview}
+          // Performance aur User Experience ke liye extra props:
+          startInLoadingState={true}
+          renderLoading={LoadingIndicatorView}
+          domStorageEnabled={true}
+          javaScriptEnabled={true}
+        />
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1, // Yeh WebView ko poori jagah deta hai
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  webview: {
+    flex: 1,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  loadingContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
   },
 });
 
