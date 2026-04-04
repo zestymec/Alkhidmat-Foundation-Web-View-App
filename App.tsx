@@ -1,8 +1,3 @@
-/**
- * Alkhidmat Foundation Web View App
- * Updated and Fixed
- */
-
 import React from 'react';
 import {
   SafeAreaView,
@@ -10,6 +5,7 @@ import {
   StyleSheet,
   useColorScheme,
   View,
+  Text,
   ActivityIndicator,
 } from 'react-native';
 
@@ -21,10 +17,10 @@ function App(): React.JSX.Element {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex: 1, // Puri screen cover karne ke liye zaroori hai
+    flex: 1, 
   };
 
-  // Loading indicator dikhane ke liye function
+  
   const LoadingIndicatorView = () => {
     return (
       <View style={styles.loadingContainer}>
@@ -44,12 +40,13 @@ function App(): React.JSX.Element {
         <WebView 
           source={{ uri: 'https://alkhidmat.org/' }} 
           style={styles.webview}
-          // Performance aur User Experience ke liye extra props:
+
           startInLoadingState={true}
           renderLoading={LoadingIndicatorView}
           domStorageEnabled={true}
           javaScriptEnabled={true}
         />
+        
       </View>
     </SafeAreaView>
   );
@@ -57,7 +54,8 @@ function App(): React.JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Yeh WebView ko poori jagah deta hai
+    flex: 1, 
+  
   },
   webview: {
     flex: 1,
