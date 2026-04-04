@@ -8,9 +8,13 @@ import {
   Text,
   ActivityIndicator,
 } from 'react-native';
-
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import Btn from './gluestack';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { WebView } from 'react-native-webview';
+
+
+import '@/global.css';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,9 +26,13 @@ function App(): React.JSX.Element {
 
   const LoadingIndicatorView = () => {
     return (
+      
+   
       <View style={styles.loadingContainer}>
         <ActivityIndicator color="#00833e" size="large" />
       </View>
+    
+  
     );
   };
 
@@ -36,16 +44,10 @@ function App(): React.JSX.Element {
       />
       
       <View style={styles.container}>
-        <WebView 
-          source={{ uri: 'https://alkhidmat.org/' }} 
-          style={styles.webview}
-
-          startInLoadingState={true}
-          renderLoading={LoadingIndicatorView}
-          domStorageEnabled={true}
-          javaScriptEnabled={true}
-        />
-        
+        {/* Provider aur Btn ke darmiyan koi space nahi honi chahiye */}
+        <GluestackUIProvider mode="light">
+          <Btn />
+        </GluestackUIProvider>
       </View>
     </SafeAreaView>
   );
