@@ -5,7 +5,7 @@ module.exports = {
     "./gluestack.{js,jsx,ts,tsx}",
     "./components/**/*.{js,jsx,ts,tsx}",
   ],
-  presets: [require("nativewind/preset")], // Ye line v3 ke liye lazmi hai
+  presets: [require("nativewind/preset")], 
   theme: {
     extend: {},
   },

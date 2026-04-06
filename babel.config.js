@@ -10,6 +10,6 @@ module.exports = {
         },
       },
     ],
-    'react-native-reanimated/plugin', // <--- Ye line lazmi add karein
+    'react-native-reanimated/plugin', 
   ],
 };
