@@ -21,7 +21,7 @@ function App(): React.JSX.Element {
     flex: 1,
   };
 
-  const [toggle, setToggle] = useState(false); // Small 't' for state variable (Standard)
+  const [toggle, setToggle] = useState(false); 
 
   const handleRedirect = () => {
     setToggle(true);
@@ -42,7 +42,7 @@ function App(): React.JSX.Element {
         backgroundColor={backgroundStyle.backgroundColor}
       />
 
-      {/* Agar WebView chal raha ho to container ka style badalna hoga */}
+     
       <View style={toggle ? styles.webviewContainer : styles.menuContainer}>
         {!toggle ? (
           <>
@@ -72,16 +72,16 @@ function App(): React.JSX.Element {
 }
 
 const styles = StyleSheet.create({
-  // Jab buttons dikh rahe hon
+  
   menuContainer: {
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center', // Isay center rakhein taake buttons beech mein aayein
+    justifyContent: 'center',
     padding: 40,
     backgroundColor: 'yellow',
   },
-  // Jab WebView dikh raha ho (No centering, full width)
+
   webviewContainer: {
     flex: 1,
     width: '100%',
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     padding: 20,
     borderRadius: 6,
-    marginBottom: 10, // Margin de dein taake buttons juday na hon
+    marginBottom: 10, 
     width: 200,
     textAlign: 'center',
   },

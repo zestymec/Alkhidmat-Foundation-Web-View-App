@@ -44,7 +44,7 @@ function App(): React.JSX.Element {
       />
       
       <View style={styles.container}>
-        {/* Provider aur Btn ke darmiyan koi space nahi honi chahiye */}
+        
         <GluestackUIProvider mode="light">
           <Btn />
         </GluestackUIProvider>
